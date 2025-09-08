@@ -1,0 +1,7 @@
+kafka-python==2.0.2
+python-dotenv==1.0.1
+fhir.resources==7.1.0
+requests==2.32.3
+python-jsonpath==1.2.2
+pytz==2024.2
+python-dateutil==2.9.0.post0 

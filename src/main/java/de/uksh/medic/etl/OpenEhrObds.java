@@ -1,7 +1,45 @@
 package de.uksh.medic.etl;
 
-import ca.uhn.fhir.context.FhirContext;
-import ca.uhn.fhir.rest.client.api.IGenericClient;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URI;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+import java.time.Duration;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
+import java.util.UUID;
+
+import javax.xml.namespace.QName;
+import javax.xml.xpath.XPathExpressionException;
+
+import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.apache.kafka.clients.consumer.ConsumerRecords;
+import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.common.errors.WakeupException;
+import org.apache.xmlbeans.XmlException;
+import org.apache.xmlbeans.XmlOptions;
+import org.ehrbase.openehr.sdk.client.openehrclient.OpenEhrClientConfig;
+import org.ehrbase.openehr.sdk.client.openehrclient.defaultrestclient.DefaultRestClient;
+import org.ehrbase.openehr.sdk.generator.commons.aql.query.Query;
+import org.ehrbase.openehr.sdk.response.dto.QueryResponseData;
+import org.ehrbase.openehr.sdk.util.exception.WrongStatusCodeException;
+import org.openehr.schemas.v1.OPERATIONALTEMPLATE;
+import org.tinylog.Logger;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -15,44 +53,25 @@ import com.nedap.archie.rm.generic.PartySelf;
 import com.nedap.archie.rm.support.identification.HierObjectId;
 import com.nedap.archie.rm.support.identification.ObjectVersionId;
 import com.nedap.archie.rm.support.identification.PartyRef;
+
+import ca.uhn.fhir.context.FhirContext;
+import ca.uhn.fhir.rest.client.api.IGenericClient;
 import de.uksh.medic.etl.jobs.FhirResolver;
-import de.uksh.medic.etl.jobs.mdr.centraxx.*;
+import de.uksh.medic.etl.jobs.mdr.centraxx.CxxMdrAttributes;
+import de.uksh.medic.etl.jobs.mdr.centraxx.CxxMdrConvert;
+import de.uksh.medic.etl.jobs.mdr.centraxx.CxxMdrItemSet;
+import de.uksh.medic.etl.jobs.mdr.centraxx.CxxMdrLogin;
 import de.uksh.medic.etl.model.MappingAttributes;
 import de.uksh.medic.etl.model.mdr.centraxx.CxxItemSet;
 import de.uksh.medic.etl.model.mdr.centraxx.RelationConvert;
 import de.uksh.medic.etl.openehrmapper.EHRParser;
 import de.uksh.medic.etl.openehrmapper.Generator;
-import de.uksh.medic.etl.settings.*;
+import de.uksh.medic.etl.settings.ConfigurationLoader;
+import de.uksh.medic.etl.settings.CxxMdrSettings;
+import de.uksh.medic.etl.settings.Mapping;
+import de.uksh.medic.etl.settings.Settings;
 import groovy.lang.Binding;
 import groovy.lang.GroovyShell;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URI;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
-import java.time.Duration;
-import java.util.*;
-import java.util.Map.Entry;
-import javax.xml.namespace.QName;
-import javax.xml.xpath.XPathExpressionException;
-import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.apache.kafka.clients.consumer.ConsumerRecords;
-import org.apache.kafka.clients.consumer.KafkaConsumer;
-import org.apache.kafka.clients.producer.KafkaProducer;
-import org.apache.kafka.clients.producer.ProducerRecord;
-import org.apache.kafka.common.errors.WakeupException;
-import org.apache.xmlbeans.XmlException;
-import org.apache.xmlbeans.XmlOptions;
-import org.ehrbase.openehr.sdk.client.openehrclient.OpenEhrClientConfig;
-import org.ehrbase.openehr.sdk.client.openehrclient.defaultrestclient.DefaultRestClient;
-import org.ehrbase.openehr.sdk.generator.commons.aql.query.Query;
-import org.ehrbase.openehr.sdk.response.dto.QueryResponseData;
-import org.openehr.schemas.v1.OPERATIONALTEMPLATE;
-import org.tinylog.Logger;
 
 public final class OpenEhrObds {
 
@@ -111,10 +130,33 @@ public final class OpenEhrObds {
         Settings.getMapping().values().forEach(m -> m.forEach(n -> initializeAttribute(n, jm)));
 
         Logger.info("OpenEhrObds started!");
-
+////////////////////////////////////////
+/// ////////////////////////////////////
+/// ////////////////////////////////////
+////////////////////////////////////////
+/// ////////////////////////////////////
+/// ////////////////////////////////////
+/// ////////////////////////////////////
+/// ////////////////////////////////////
+/// ////////////////////////////////////
+/// ////////////////////////////////////
+/// ////////////////////////////////////
+/// ////////////////////////////////////
+/// ////////////////////////////////////
+/// ////////////////////////////////////
+/// ////////////////////////////////////
+/// ////////////////////////////////////
+/// ////////////////////////////////////
+/// ////////////////////////////////////
+/// ////////////////////////////////////
+/// ////////////////////////////////////
+/// ////////////////////////////////////
+/// ////////////////////////////////////
+/// ////////////////////////////////////
+/// ////////////////////////////////////
         if (Settings.getKafka().getUrl() == null || Settings.getKafka().getUrl().isEmpty()) {
             Logger.debug("Kafka URL not set, loading local file");
-            File[] files = new File("testData/sofa").listFiles();
+            File[] files = new File("testData/copra/saps2").listFiles();
             for (File f : files) {
                 if (f.isDirectory()) {
                     continue;
@@ -251,10 +293,36 @@ public final class OpenEhrObds {
 
         return new HashMap<>();
     }
-
-    @SuppressWarnings({ "HiddenField" })
+////////////////////////////////////////
+/// ////////////////////////////////////
+/// ////////////////////////////////////
+////////////////////////////////////////
+/// ////////////////////////////////////
+/// ////////////////////////////////////
+/// ////////////////////////////////////
+/// ////////////////////////////////////
+/// ////////////////////////////////////
+/// ////////////////////////////////////
+/// ////////////////////////////////////
+/// ////////////////////////////////////
+/// ////////////////////////////////////
+/// ////////////////////////////////////
+/// ////////////////////////////////////
+/// ////////////////////////////////////
+/// ////////////////////////////////////
+/// ////////////////////////////////////
+/// ////////////////////////////////////
+/// ////////////////////////////////////
+/// ////////////////////////////////////
+/// ////////////////////////////////////
+/// ////////////////////////////////////
+/// ////////////////////////////////////
+    
+ @SuppressWarnings({ "HiddenField" })
     public static Map<String, Object> javaMap(Set<Entry<String, Object>> xmlSet, String path, IGenericClient fhirClient,
             FhirResolver fhirResolver, DefaultRestClient openEhrClient, UtilMethods utils) {
+        // insert or delete  from here: 
+
         return null;
     }
 
@@ -431,7 +499,19 @@ public final class OpenEhrObds {
         if (ovi != null) {
             composition.setUid(ovi);
         }
-        openEhrClient.compositionEndpoint(ehrId).mergeRaw(composition);
+        try {
+            openEhrClient.compositionEndpoint(ehrId).mergeRaw(composition);
+        } catch (WrongStatusCodeException e) {
+            String comp = "";
+            try {
+                JacksonUtil.getObjectMapper().writeValueAsString(composition);
+            } catch (JsonProcessingException e2) {
+
+            }
+            Logger.error("Error on composition upload", comp, e);
+            throw new ProcessingException(e + ";;;" + comp);
+        }
+
     }
 
 }

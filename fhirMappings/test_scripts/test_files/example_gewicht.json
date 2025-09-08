@@ -1,0 +1,15 @@
+{
+    "date_created" : "2024-12-11T09:00:12",
+    "mpi" : "thisIsATestMpiId",
+    "sending_application" : "COPRA",
+    "description" : "Gewicht des Patienten",
+    "measurement_id" : "12345678911",
+    "field_name" : "Patient_Gewicht",
+    "date_processed_by_copra" : "2024-12-11T09:01:11",
+    "unit" : "",
+    "patient_id" : "12345678",
+    "original_patient_id" : "12345678",
+    "date_processed" : "2025-01-15T11:10:34",
+    "value" : "72.0",
+    "copra_patient_id" : "123456789123456789"
+  }

@@ -1,0 +1,12 @@
+{
+    "Patient": {
+        "PatId": "patid-12345",
+        "Vorname": "Max",
+        "Nachname": "Mustermann",
+        "Adresse": {
+            "Straße": "Musterstraße 42",
+            "PLZ": "12345",
+            "Stadt": "Musterstadt"
+        }
+    }
+}

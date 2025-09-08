@@ -1,0 +1,15 @@
+{
+    "date_created" : "2024-12-10T17:00:05",
+    "mpi" : "thisIsATestMpiId",
+    "sending_application" : "COPRA",
+    "description" : "Herzfrequenz",
+    "measurement_id" : "12345678915",
+    "field_name" : "CO_Vital_HF",
+    "date_processed_by_copra" : "2024-12-10T19:50:09",
+    "unit" : "",
+    "patient_id" : "12345678",
+    "original_patient_id" : "12345678",
+    "date_processed" : "2025-01-22T15:21:40",
+    "value" : "90.0",
+    "copra_patient_id" : "123456789123456789"
+  }

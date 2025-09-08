@@ -1,0 +1,15 @@
+{
+    "date_created": "2024-01-01T00:01:01",
+    "mpi": "thisIsATestMpiId",
+    "sending_application": "COPRA",
+    "description": "Atemfrequenz",
+    "measurement_id": "12345678910",
+    "field_name": "CO_Vital_AF",
+    "date_processed_by_copra": "2024-01-01T01:01:01",
+    "unit": "",
+    "patient_id": "12345678",
+    "original_patient_id": "12345678",
+    "date_processed": "2025-01-14T15:12:19",
+    "value": "8.0",
+    "copra_patient_id": "123456789123456789"
+  }

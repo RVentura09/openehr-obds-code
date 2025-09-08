@@ -1,0 +1,15 @@
+{
+  "date_created" : "2025-03-06T08:28:48",
+  "mpi" : "patid-12345",
+  "sending_application" : "COPRA",
+  "description" : "CO_Vital_Temp5",
+  "measurement_id" : "38584448004",
+  "field_name" : "CO_Vital_Temp5",
+  "date_processed_by_copra" : "2025-03-06T10:08:33",
+  "unit" : "",
+  "patient_id" : "61297468",
+  "original_patient_id" : "61297468",
+  "date_processed" : "2025-03-07T12:05:39",
+  "value" : "21.87",
+  "copra_patient_id" : "987654321"
+}

@@ -1,0 +1,11 @@
+{
+  "mpi" : "thisIsATestMpiId",
+  "compositionId": null,
+  "encounterId": "123456",
+  "statusCode": "in-progress",
+  "class": "IMP",
+  "periodStart": "2024-01-02T01:23:56",
+  "periodEnd": null,
+  "deceased" : "N",
+  "dateOfDeath" : null
+}

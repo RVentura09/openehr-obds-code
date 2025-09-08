@@ -1,0 +1,181 @@
+services:
+  consumer_person:
+    image: harbor.lake.medicsh.de/kds-fhir-export/consumer:latest
+    build:
+      context: .
+      pull: true
+    deploy:
+      mode: replicated
+      replicas: 4
+    env_file: .env_person
+    restart: unless-stopped
+  consumer_fall:
+    image: harbor.lake.medicsh.de/kds-fhir-export/consumer:latest
+    build:
+      context: .
+      pull: true
+    deploy:
+      mode: replicated
+      replicas: 4
+    env_file: .env_fall
+    restart: unless-stopped
+  consumer_consent:
+    image: harbor.lake.medicsh.de/kds-fhir-export/consumer:latest
+    build:
+      context: .
+      pull: true
+    deploy:
+      mode: replicated
+      replicas: 4
+    env_file: .env_consent
+    restart: unless-stopped
+  consumer_diagnose:
+    image: harbor.lake.medicsh.de/kds-fhir-export/consumer:latest
+    build:
+      context: .
+      pull: true
+    deploy:
+      mode: replicated
+      replicas: 4
+    env_file: .env_diagnose
+    restart: unless-stopped
+  consumer_prozedur:
+    image: harbor.lake.medicsh.de/kds-fhir-export/consumer:latest
+    build:
+      context: .
+      pull: true
+    deploy:
+      mode: replicated
+      replicas: 4
+    env_file: .env_prozedur
+    restart: unless-stopped
+  consumer_labor:
+    image: harbor.lake.medicsh.de/kds-fhir-export/consumer:latest
+    build:
+      context: .
+      pull: true
+    deploy:
+      mode: replicated
+      replicas: 4
+    env_file: .env_labor
+    restart: unless-stopped
+  consumer_icu_atemfrequenz:
+    image: harbor.lake.medicsh.de/kds-fhir-export/consumer:latest
+    build:
+      context: .
+      pull: true
+    deploy:
+      mode: replicated
+      replicas: 4
+    env_file: .env_icu_atemfrequenz
+    restart: unless-stopped
+  consumer_icu_koerpergewicht:
+    image: harbor.lake.medicsh.de/kds-fhir-export/consumer:latest
+    build:
+      context: .
+      pull: true
+    deploy:
+      mode: replicated
+      replicas: 4
+    env_file: .env_icu_koerpergewicht
+    restart: unless-stopped
+  consumer_icu_koerpergroesse:
+    image: harbor.lake.medicsh.de/kds-fhir-export/consumer:latest
+    build:
+      context: .
+      pull: true
+    deploy:
+      mode: replicated
+      replicas: 4
+    env_file: .env_icu_koerpergroesse
+    restart: unless-stopped
+  consumer_icu_spo2:
+    image: harbor.lake.medicsh.de/kds-fhir-export/consumer:latest
+    build:
+      context: .
+      pull: true
+    deploy:
+      mode: replicated
+      replicas: 4
+    env_file: .env_icu_spo2
+    restart: unless-stopped
+  consumer_icu_herzfrequenz:
+    image: harbor.lake.medicsh.de/kds-fhir-export/consumer:latest
+    build:
+      context: .
+      pull: true
+    deploy:
+      mode: replicated
+      replicas: 4
+    env_file: .env_icu_herzfrequenz
+    restart: unless-stopped
+  consumer_icu_blutdruck:
+    image: harbor.lake.medicsh.de/kds-fhir-export/consumer:latest
+    build:
+      context: .
+      pull: true
+    deploy:
+      mode: replicated
+      replicas: 4
+    env_file: .env_icu_blutdruck
+    restart: unless-stopped
+  consumer_icu_ecmo:
+    image: harbor.lake.medicsh.de/kds-fhir-export/consumer:latest
+    build:
+      context: .
+      pull: true
+    deploy:
+      mode: replicated
+      replicas: 4
+    env_file: .env_icu_ecmo
+    restart: unless-stopped
+  consumer_icu_beatmung:
+    image: harbor.lake.medicsh.de/kds-fhir-export/consumer:latest
+    build:
+      context: .
+      pull: true
+    deploy:
+      mode: replicated
+      replicas: 4
+    env_file: .env_icu_beatmung
+    restart: unless-stopped
+  consumer_icu_zvd:
+      image: harbor.lake.medicsh.de/kds-fhir-export/consumer:latest
+      build:
+        context: .
+        pull: true
+      deploy:
+        mode: replicated
+        replicas: 4
+      env_file: .env_icu_zvd
+      restart: unless-stopped
+  consumer_biobank:
+    image: harbor.lake.medicsh.de/kds-fhir-export/consumer:latest
+    build:
+      context: .
+      pull: true
+    deploy:
+      mode: replicated
+      replicas: 4
+    env_file: .env_biobank
+    restart: unless-stopped
+  consumer_icu_temperature:
+    image: harbor.lake.medicsh.de/kds-fhir-export/consumer:latest
+    build:
+      context: .
+      pull: true
+    deploy:
+      mode: replicated
+      replicas: 4
+    env_file: .env_icu_temperature
+    restart: unless-stopped
+  consumer_researchstudy:
+    image: harbor.lake.medicsh.de/kds-fhir-export/consumer:latest
+    build:
+      context: .
+      pull: true
+    deploy:
+      mode: replicated
+      replicas: 2
+    env_file: .env_researchstudy
+    restart: unless-stopped

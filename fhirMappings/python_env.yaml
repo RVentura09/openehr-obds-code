@@ -1,0 +1,10 @@
+name: base
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+      - python-dotenv
+      - kafka-python
+      - fhir-resources

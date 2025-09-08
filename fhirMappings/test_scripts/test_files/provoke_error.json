@@ -1,0 +1,5 @@
+{
+    "Patient": {
+        "SomeKey": "I'm not mappable"
+    }
+}
